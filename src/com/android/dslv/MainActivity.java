@@ -24,6 +24,9 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.dslv.Fragments.BabyFragment;
+import com.android.dslv.Fragments.TaskFragment;
+import com.android.dslv.Fragments.WhatIfFragment;
 import com.example.ehandover.R;
 import com.mobeta.android.dslv.DragSortController;
 import com.mobeta.android.dslv.DragSortListView;
@@ -78,12 +81,15 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
             }
         });
 
-        
         actionBar.addTab(actionBar.newTab()
-                .setText("Simple")
-                .setTabListener(new myTabListener(
-                        this, "simple")));
-
+				.setText(mSectionsPagerAdapter.getPageTitle(0))
+				.setTabListener(this));
+        actionBar.addTab(actionBar.newTab()
+				.setText(mSectionsPagerAdapter.getPageTitle(1))
+				.setTabListener(this));
+        actionBar.addTab(actionBar.newTab()
+				.setText(mSectionsPagerAdapter.getPageTitle(2))
+				.setTabListener(this));
        
 
 
@@ -141,11 +147,31 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
             // getItem is called to instantiate the fragment for the given page.
             // Return a DummySectionFragment (defined as a static inner class
             // below) with the page number as its lone argument.
-            Fragment fragment = new DummySectionFragment();
-            Bundle args = new Bundle();
-            args.putInt(DummySectionFragment.ARG_SECTION_NUMBER, position + 1);
-            fragment.setArguments(args);
-            return fragment;
+        	Fragment fragment;
+        	switch(position){
+        	case 0:
+        		fragment = new TaskFragment();
+//                Bundle args0 = new Bundle();
+//                args0.putInt(DummySectionFragment.ARG_SECTION_NUMBER, position + 1);
+//                fragment.setArguments(args0);
+                return fragment;
+        	case 1:
+        		fragment = new BabyFragment();
+//                Bundle args1 = new Bundle();
+//                args1.putInt(TaskFragment.ARG_SECTION_NUMBER, position + 1);
+//                fragment.setArguments(args1);
+                return fragment;
+        	case 2:
+        		fragment = new WhatIfFragment();
+//                Bundle args2 = new Bundle();
+//                args2.putInt(TaskFragment.ARG_SECTION_NUMBER, position + 1);
+//                fragment.setArguments(args2);
+                return fragment;
+            default:
+            	return null;
+        		
+        	}
+            
         }
 
         @Override

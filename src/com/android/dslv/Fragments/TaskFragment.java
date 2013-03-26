@@ -1,4 +1,4 @@
-package com.android.dslv;
+package com.android.dslv.Fragments;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 
-public class DummySectionFragment extends Fragment {
+public class TaskFragment extends Fragment {
 
         public static final String ARG_SECTION_NUMBER = "section_number";
 
@@ -47,13 +47,13 @@ public class DummySectionFragment extends Fragment {
         };
 
 
-        public DummySectionFragment() {
+        public TaskFragment() {
         }
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment, container, false);
+            View rootView = inflater.inflate(R.layout.task_fragment, container, false);
             
             
             DragSortListView listView = (DragSortListView) rootView.findViewById(R.id.listview);
@@ -70,6 +70,7 @@ public class DummySectionFragment extends Fragment {
     	    listView.setAdapter((ListAdapter)adapter);
     	    listView.setDropListener(onDrop);
     	    listView.setRemoveListener(onRemove);
+    	    
 
     	    DragSortController controller = new DragSortController(listView);
     	  //  controller.setDragHandleId(R.id.imageView1);
